@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cubo 3D com Three.js</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Criar uma cena
+    const scene = new THREE.Scene();
+
+    // Criar uma câmera
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    // Criar um renderizador
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Criar uma geometria de cubo
+    const geometry = new THREE.BoxGeometry();
+
+    // Criar um material
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+    // Criar uma malha (mesh) combinando geometria e material
+    const cube = new THREE.Mesh(geometry, material);
+
+    // Adicionar a malha à cena
+    scene.add(cube);
+
+    // Posicionar a câmera
+    camera.position.z = 5;
+
+    // Função de animação
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Rotacionar o cubo
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+
+      // Renderizar a cena
+      renderer.render(scene, camera);
+    }
+
+    // Iniciar a animação
+    animate();
+
+    // Ajustar o tamanho do renderizador ao redimensionar a janela
+    window.addEventListener('resize', () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+</body>
+</html>
