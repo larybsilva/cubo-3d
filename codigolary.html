@@ -12,27 +12,27 @@
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    // Criar uma cena
+    // Criar a cena
     const scene = new THREE.Scene();
 
-    // Criar uma câmera
+    // Criar a câmera
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-    // Criar um renderizador
+    // Criar o renderizador
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Criar uma geometria de cubo
+    // Criar a geometria do cubo
     const geometry = new THREE.BoxGeometry();
 
-    // Criar um material
+    // Criar o material do cubo
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 
-    // Criar uma malha (mesh) combinando geometria e material
+    // Criar a malha (mesh) do cubo
     const cube = new THREE.Mesh(geometry, material);
 
-    // Adicionar a malha à cena
+    // Adicionar o cubo à cena
     scene.add(cube);
 
     // Posicionar a câmera
@@ -53,7 +53,7 @@
     // Iniciar a animação
     animate();
 
-    // Ajustar o tamanho do renderizador ao redimensionar a janela
+    // Ajustar o renderizador ao redimensionar a janela
     window.addEventListener('resize', () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
